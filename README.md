@@ -1,8 +1,9 @@
-# Info/Resources for Energy Analytics Comps 2022
-Welcome to Energy Comps 2022! This document should help you become more familiar with the structures already in place surrounding this comps project, including the Energy Server, Database, API, Website, Analysis, and other parts that previous groups have implemented/started implementing.
+# Info/Resources for Energy Analytics Comps
+Welcome to Energy Comps! This document should help you become more familiar with the structures already in place surrounding this comps project, including the Energy Server, Database, API, Website, Analysis, and other parts that previous groups have implemented/started implementing.
 
 ## Energy Server
 To to access the database or other data from the energy server, your files must be on the server as well. This will walk you through how to connect to the server from your local device and how to navigate the server. Editors like [VS Code](https://code.visualstudio.com/) are very helpful when navigating the server and editing files - would recommend over using vim.
+
 ### How to Connect
 1. Open terminal or equivalent
 2. Enter 'ssh [your carleton username]@energycomps.its.carleton.edu'
@@ -15,9 +16,10 @@ To set up an SSH key, which allows you to login without a password, check out [t
 You will be set up with a home repository when you join this comps group, which is the best place to put your work that is in progress. When you log in to the server, this is where it dumps you. To get to the rest of the server, enter 'cd /' into your terminal, and you will be where all of the rest of the code is.
 #### Where you can find some important code in the server:
 - Website Frontend: /var/www/frontend
-- Database: /var/www/backend/backend/database
-- API: /var/www/backend/backend/api
-- Analysis /var/www/backend/data-analysis
+- Database: [/var/www/backend/backend/database](https://github.com/carleton-cs-energy-analytics/backend/tree/master/backend/database)
+    - Tables: [/var/www/backend/migrations](https://github.com/carleton-cs-energy-analytics/backend/tree/master/migrations)
+- API: [/var/www/backend/backend/api](https://github.com/carleton-cs-energy-analytics/backend/tree/master/backend/api)
+- Analysis [/var/www/backend/data-analysis](https://github.com/carleton-cs-energy-analytics/data-analysis)
 - Uploaded raw data files: var/data/uploads/siemens
 
 ## Energy Analytics Comps Github
