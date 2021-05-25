@@ -2,7 +2,7 @@
 Welcome to Energy Comps! This document should help you become more familiar with the structures already in place surrounding this comps project, including the Energy Server, Database, API, Website, Analysis, and other parts that previous groups have implemented/started implementing.
 
 ## Energy Server
-To to access the database or other data from the energy server, your files must be on the server as well. This will walk you through how to connect to the server from your local device and how to navigate the server. Editors like [VS Code](https://code.visualstudio.com/) are very helpful when navigating the server and editing files - would recommend over only using vim.
+To to access the database or other data from the energy server, your files must be on the server as well. This will walk you through how to connect to the server from your local device and how to navigate the server. Editors like [VS Code](https://code.visualstudio.com/) are very helpful when navigating the server and editing files - would recommend over only using vim. 
 
 ### How to Connect
 1. Open terminal or equivalent
@@ -10,6 +10,8 @@ To to access the database or other data from the energy server, your files must 
 3. Type in your Carleton password when it promts you
     
     **Note:** If you are using an editor like VS Code, you just need to click the Remote SSH button, connect to host, and then add the energy server as a host. You will then be able to quickly connect to it anytime.
+    
+    **Another Note:** It will also save you so much time and sanity if you create an SSH shortcut at the start of the project (https://scotch.io/tutorials/how-to-create-an-ssh-shortcut) and an RSA key (https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-2) so that instead of having to type in 'ssh username@energycomps.its.carleton.edu' and then your username and password every time, you can just type 'ssh comps' and be logged in immediately. 
 
 To set up an SSH key, which allows you to login without a password, check out [this site](https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/), or just look around for other resources online. This is extemely nice to have, since you will be logging onto the server a lot.
 
@@ -56,7 +58,7 @@ The Energy Analytics Dashboard is where all of our analysis is displayed for sta
 The code for the website is found in the [frontend](https://github.com/carleton-cs-energy-analytics/frontend) repository on the github or in /var/www/frontend on the server. For more information on how it works and how to change the website, check out the README for the frontend github repo.
 
 ## Analysis/Anomaly Detection
-In our 2021 comps group, we started performing analysis on the energy data dectecting anomalies. The [data-analysis repository](https://github.com/carleton-cs-energy-analytics/data-analysis) holds all of our ML and heuristics algorithms that search for anomalies, specifically in stl.py. Check out README.md for more information on how it works/how to expand on
+In our 2021 comps group, we started performing analysis on the energy data dectecting anomalies. The [data-analysis repository](https://github.com/carleton-cs-energy-analytics/data-analysis) holds all of our ML and heuristics algorithms that search for anomalies, specifically in stl.py. Check out README.md for more information on how it works/how to expand on our work. We are using three techniques so far: STL (seasonal trend decomposisiont using LOESS), heuristic models (Just hand-input constant values) and isolation forests (https://towardsdatascience.com/isolation-forest-is-the-best-anomaly-detection-algorithm-for-big-data-right-now-e1a18ec0f94f). The python code runs every night on a crontab as user energy ('sudo -u energy -i' then crontab -e). Note that when the algorithm runs, it moves the images to /var/www/frontend/static/images, and the csv files to /var/www/frontend/static/csv-files, which are global variables in the code. 
 
 ## Brick
 Brick is a standard for naming and connections between building devices. As of now, we have a script that takes the hierarchy we have in the database (buildings, floors, rooms, points) and puts them into a brick Graph, which is an RDF graph. We also have a python graph that mimics this, but the Brick one is more useful (or will be). Now that we have the graph, the next step is figuring out how to query it. You have to use SPARQL to query it, but we did not have time to figure that out fully this year (2021). Here is some documentation for SPARQL: [here](https://sparqlwrapper.readthedocs.io/en/latest/main.html) and [here](https://www.w3.org/TR/rdf-sparql-query/). To get a feel for things, check out below for the code that we have and some useful resources.
